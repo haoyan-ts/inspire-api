@@ -65,8 +65,8 @@ PLACEHOLDER_VALUE = -1  # Used to indicate "don't change this joint"
 PLACEHOLDER_VALUE_16BIT = 0xFFFF
 
 # Timing Constants
-SERIAL_READ_DELAY = 0.01  # seconds
-BUFFER_CLEAR_DELAY = 0.01  # seconds
+SERIAL_READ_DELAY = 0.005  # seconds
+BUFFER_CLEAR_DELAY = 0.001  # seconds
 
 # Data Conversion Constants
 BYTE_MASK = 0xFF
