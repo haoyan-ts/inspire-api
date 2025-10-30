@@ -270,12 +270,6 @@ class InspireHandSerial(InspireHandBase):
 
         self._ser.write(bytearray(frame))
 
-        # Clear response buffer
-        time.sleep(BUFFER_CLEAR_DELAY)
-        while self._ser.in_waiting > 0:
-            self._ser.read_all()
-            time.sleep(BUFFER_CLEAR_DELAY)
-
         return True
 
     def _read_register(self, hand_id: int, addr: int, num: int) -> List[int]:
@@ -315,6 +309,10 @@ class InspireHandSerial(InspireHandBase):
             self._logger.debug(
                 f"Reading {num} bytes from register {addr} for hand {hand_id}"
             )
+
+        # Clear response buffer
+        while self._ser.in_waiting > 0:
+            self._ser.read_all()
 
         self._ser.write(bytearray(frame))
 
